@@ -2,12 +2,47 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+class Game extends React.Component{
+  render(){
+    return (
+      <div>
+      <Country />
+      <AdviceColumn />
+      <StatusBoard />
+      </div>
+      );
+  }
+}
+
 class Country extends React.Component{
+
   render(){
     return (
       <div>
       <p> This is a country </p>
-      <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-mPmUyeQfCJk%2FUB3wkAaJpJI%2FAAAAAAAAASU%2FRJk-oqNkKDE%2Fs1600%2Fmap-of-world.jpg&f=1&nofb=1" className = "image" alt="photo"/>
+      <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-mPmUyeQfCJk%2FUB3wkAaJpJI%2FAAAAAAAAASU%2FRJk-oqNkKDE%2Fs1600%2Fmap-of-world.jpg&f=1&nofb=1" className = "image" alt="photo" width ="300" height = "300"/>
+      </div>
+      );
+  }
+}
+
+class StatusBoard extends React.Component{
+  render(){
+    return (
+      <div>
+      <p> This is the statusboard  </p>
+      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.panic.com%2Fblog%2Fwp-content%2Fuploads%2F2013%2F04%2Fsb-panic-3.jpg&f=1&nofb=1" className = "image" alt="photo" width ="300" height = "300"/>
+      </div>
+      );
+  }
+}
+
+class AdviceColumn extends React.Component{
+  render(){
+    return (
+      <div>
+      <p> This is the AdviceColumn </p>
+      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.images.express.co.uk%2Fimg%2Fdynamic%2F71%2F590x%2Fsecondary%2FBMW-PGA-Championship-latest-leaderboard-Wentworth-948805.jpg&f=1&nofb=1" className = "image" alt="photo" width ="300" height = "300"/>
       </div>
       );
   }
@@ -24,7 +59,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload Hello world.fasdlsdafldsaf
         </p>
-        <Country
+        <Game
           />
         <a
           className="App-link"
