@@ -19,6 +19,17 @@ class Game extends React.Component{
 }
 
 class Country extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      GDP: 100, 
+      Emissions: 100, 
+      HealthBar: 100,
+      CarbonPolicy: "None",
+      defaultPolicy: "None",
+      MeetingInternationalPolicy = true 
+    }
+  }
 
   render(){
     return (
@@ -61,7 +72,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload Hello world.fasdlsdafldsaf
+          Edit <code>src/App.js</code> and save to reload Hello world.
         </p>
         <Game
           />
