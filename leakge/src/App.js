@@ -24,9 +24,13 @@ class Button extends React.Component{
     this.state = {
     InitialWord : "Start the game."
   }; 
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(){
+    this.setState({InitialWord: "The game has begun"});
   }
   render(){
-    return <button id="start"> {this.state.InitialWord} </button>
+    return <button id="start" onClick = {this.handleClick}> {this.state.InitialWord} </button>
   }
 
 }
