@@ -46,7 +46,7 @@ class Button extends React.Component{
     }
   }
   render(){
-    return <button id="start" onClick = {this.handleClick}> {this.state.InitialWord} </button>
+    return <button id="start" style={{width:"200px",height:"50px",boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",fontSize: "20px"}} onClick = {this.handleClick}> {this.state.InitialWord} </button>
   }
 
 }
