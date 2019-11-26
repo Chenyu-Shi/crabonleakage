@@ -10,24 +10,39 @@ class Game extends React.Component{
         <source src="http://soundbible.com/mp3/Orca-SoundBible.com-841491912.mp3" type = 'audio/mp3' >
         </source>
       </audio>
-      <TextBar />
+      <TextBar id="text"/>
       <Button />
       </div>
       );
   }
 };
 
+
 class Button extends React.Component{
   
   constructor(props){
     super(props);
     this.state = {
-    InitialWord : "Start the game."
+    InitialWord : "Got it! Let's start the game.",
+    Stage: "Init"
   }; 
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(){
-    this.setState({InitialWord: "The game has begun"});
+
+    if(this.state.Stage == "Init"){
+      this.setState({InitialWord: "The game has begun", Stage:"Intro"});
+
+      changeText("This is your country is state right now");
+    
+    }
+    else{
+      if (this.state.Stage =="Intro"){
+
+      }
+    }
+
+
   }
   render(){
     return <button id="start" onClick = {this.handleClick}> {this.state.InitialWord} </button>
@@ -35,13 +50,20 @@ class Button extends React.Component{
 
 }
 
+
+function changeText(word){
+    this.setState({InitialWord:word});
+  }
+
 class TextBar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-    InitialWord : "You just started this game."
-  }; 
+    InitialWord : "You are about to start this game. The premise of this game is to blah blah"
+  };
+    changeText = changeText.bind(this);
   }
+
 
   render(){
     return <p> {this.state.InitialWord} </p>
