@@ -24,25 +24,26 @@ class Button extends React.Component{
     super(props);
     this.state = {
     InitialWord : "Got it! Let's start the game.",
-    Stage: "Init"
+    Stage: "Init",
+    Player: {gdp: "10",
+            carbon: "10",
+            policy: "No policy yeet"}
   }; 
     this.handleClick = this.handleClick.bind(this);
   }
+
   handleClick(){
 
     if(this.state.Stage == "Init"){
       this.setState({InitialWord: "The game has begun", Stage:"Intro"});
 
-      changeText("This is your country is state right now");
+      changeText("This is your country's state right now: your gdp is " + this.state.Player.gdp + " trillion dollars. Your carbon emission is " + this.state.Player.carbon + ", your carbon policy is " + this.state.Player.policy );
     
     }
     else{
-      if (this.state.Stage =="Intro"){
-
+      if (this.state.Stage == "Intro"){
       }
     }
-
-
   }
   render(){
     return <button id="start" onClick = {this.handleClick}> {this.state.InitialWord} </button>
@@ -66,7 +67,7 @@ class TextBar extends React.Component {
 
 
   render(){
-    return <p> {this.state.InitialWord} </p>
+    return <div style={{width:"800px"}}><p> {this.state.InitialWord} </p></div>
   }
 }
 
@@ -78,17 +79,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-
         <Game
           />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
