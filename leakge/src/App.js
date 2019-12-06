@@ -38,11 +38,21 @@ class Button extends React.Component{
 
     if(this.state.Stage == "Init"){
       this.setState({InitialWord: "Submit your policy based on your target emission", Stage:"Intro"});
-      changeText("This is your country's state right now: your gdp is " + this.state.Player.gdp + " trillion dollars. Your carbon emission is " + this.state.Player.carbon + ", your carbon policy is " + this.state.Player.policy );
+      changeText("Your gdp is " + this.state.Player.gdp + " trillion dollars. Your carbon emission is " + this.state.Player.carbon + ", your carbon policy is " + this.state.Player.policy );
     }
     else{
       if (this.state.Stage == "Intro"){
         //change policy 
+        var newGDP = this.state.Player.gdp+1;
+        var newCarbon = this.state.Player.carbon + 1; 
+        var newPolicy = "New Policy selected";
+        this.setState({"Player":{gdp:newGDP,carbon:newCarbon,policy:newPolicy}});
+
+        changeText("Your gdp is " + newGDP + " trillion dollars. Your carbon emission is " + newCarbon + ", your carbon policy is " +newPolicy );
+        if (newCarbon>20){
+          alert("You just died lmao\n" );
+        }
+
         roundUpdate(this.state.policy);
       }
     }
@@ -50,7 +60,6 @@ class Button extends React.Component{
   render(){
     return <button id="start" style={{width:"200px",height:"50px",boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",fontSize: "20px"}} onClick = {this.handleClick}> {this.state.InitialWord} </button>
   }
-
 }
 
 function roundUpdate() {
