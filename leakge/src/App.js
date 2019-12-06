@@ -37,10 +37,8 @@ class Button extends React.Component{
   handleClick(){
 
     if(this.state.Stage == "Init"){
-      this.setState({InitialWord: "The game has begun", Stage:"Intro"});
-
+      this.setState({InitialWord: "Submit your policy based on your target emission", Stage:"Intro"});
       changeText("This is your country's state right now: your gdp is " + this.state.Player.gdp + " trillion dollars. Your carbon emission is " + this.state.Player.carbon + ", your carbon policy is " + this.state.Player.policy );
-    
     }
     else{
       if (this.state.Stage == "Intro"){
@@ -88,9 +86,16 @@ class TextBar extends React.Component {
       <Country name ="E"/>
 
       </table>
+      <select name="Policy">
+      <option value="Tax">Volvo</option>
+      <option value="Enbargo">Saab</option>
+      <option value="No restriction">Fiat</option>
+      </select>
       </div>
     }
+    else{
     return <div style={{width:"800px"}}><p> {this.state.InitialWord} </p></div>
+  }
   }
 }
 
