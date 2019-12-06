@@ -2,7 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
 class Game extends React.Component{
+
   render(){
     return (
       <div>
@@ -25,8 +27,8 @@ class Button extends React.Component{
     this.state = {
     InitialWord : "Got it! Let's start the game.",
     Stage: "Init",
-    Player: {gdp: "10",
-            carbon: "10",
+    Player: {gdp: 10,
+            carbon: 10,
             policy: "No policy yeet"}
   }; 
     this.handleClick = this.handleClick.bind(this);
@@ -53,20 +55,41 @@ class Button extends React.Component{
 
 
 function changeText(word){
-    this.setState({InitialWord:word});
+    this.setState({InitialWord:word, Started: true });
   }
 
 class TextBar extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-    InitialWord : "You are about to start this game. The premise of this game is to blah blah"
+    InitialWord : "You are about to start this game. The premise of this game is to blah blah",
+    Started: false
   };
     changeText = changeText.bind(this);
   }
 
 
   render(){
+    if (this.state.Started){
+      return <div >
+      <p> {this.state.InitialWord} </p>
+      <table>
+      <tr>
+        <th> Country</th>
+        <th>GDP</th>
+    <th>Score</th>
+    <th>CurrentPolicy</th>
+    <th>Meeting International Agreement</th>
+      </tr>
+      <Country name ="A"/>
+      <Country name ="B"/>
+      <Country name = "C"/>
+      <Country name = "D"/>
+      <Country name ="E"/>
+
+      </table>
+      </div>
+    }
     return <div style={{width:"800px"}}><p> {this.state.InitialWord} </p></div>
   }
 }
@@ -76,23 +99,34 @@ class Policy extends React.Component {
     return <div></div>
   }
 }
+
 function roundUpdate() {
   return 
 }
 function acceptAgreement() {
   return 
 }
+
 class Country extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      GDP : 0,
-      Emissions : 0,
+      GDP : 10,
+      Emissions : 10,
       Score : 0,
-      CurrentPolicy : "",
-      DefaultPolicy : "",
-      MeetingInternationalAgreement : true
+      CurrentPolicy : "None",
+      DefaultPolicy : "None",
+      MeetingInternationalAgreement : "Yes"
     }
+  }
+  render(){
+    return <tr>
+    <th>{this.props.name}</th>
+    <th>{this.state.GDP}</th>
+    <th>{this.state.Score}</th>
+    <th>{this.state.CurrentPolicy}</th>
+    <th>{this.state.MeetingInternationalAgreement}</th>
+    </tr>
   }
 }
 
