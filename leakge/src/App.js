@@ -42,6 +42,8 @@ class Button extends React.Component{
     }
     else{
       if (this.state.Stage == "Intro"){
+        //change policy 
+        roundUpdate(this.state.policy);
       }
     }
   }
@@ -51,6 +53,19 @@ class Button extends React.Component{
 
 }
 
+function roundUpdate() {
+  //changing states
+
+  var listofcountries = this.state.States; 
+  for (var i = 0; i < listofcountries.length; i++) {
+    var country = listofcountries[i];
+    country.GDP += 1;
+    country.Emissions += 1;
+    listofcountries[i] = country;
+    //Do something
+}
+  this.setState({"States": listofcountries});
+}
 
 function changeText(word){
     this.setState({InitialWord:word, Started: true });
@@ -61,9 +76,56 @@ class TextBar extends React.Component {
     super(props);
     this.state = {
     InitialWord : "You are about to start this game. The premise of this game is to blah blah",
-    Started: false
+    Started: false,
+    States: [{
+      Name: "A",
+      GDP : 10,
+      Emissions : 10,
+      Score : 0,
+      CurrentPolicy : "None",
+      DefaultPolicy : "None",
+      MeetingInternationalAgreement : "Yes"
+    },
+    {
+      Name: "B",
+      GDP : 10,
+      Emissions : 10,
+      Score : 0,
+      CurrentPolicy : "None",
+      DefaultPolicy : "None",
+      MeetingInternationalAgreement : "Yes"
+    },
+    {
+      Name: "C",
+      GDP : 10,
+      Emissions : 10,
+      Score : 0,
+      CurrentPolicy : "None",
+      DefaultPolicy : "None",
+      MeetingInternationalAgreement : "Yes"
+    },
+    {
+      Name: "D",
+      GDP : 10,
+      Emissions : 10,
+      Score : 0,
+      CurrentPolicy : "None",
+      DefaultPolicy : "None",
+      MeetingInternationalAgreement : "Yes"
+    },
+    {
+      Name: "E",
+      GDP : 10,
+      Emissions : 10,
+      Score : 0,
+      CurrentPolicy : "None",
+      DefaultPolicy : "None",
+      MeetingInternationalAgreement : "Yes"
+    }
+    ]
   };
     changeText = changeText.bind(this);
+    roundUpdate = roundUpdate.bind(this);
   }
 
 
@@ -75,15 +137,17 @@ class TextBar extends React.Component {
       <tr>
         <th> Country</th>
         <th>GDP</th>
+        <th>Emissions</th>
     <th>Score</th>
     <th>CurrentPolicy</th>
     <th>Meeting International Agreement</th>
       </tr>
-      <Country name ="A"/>
-      <Country name ="B"/>
-      <Country name = "C"/>
-      <Country name = "D"/>
-      <Country name ="E"/>
+      <Country name ={this.state.States[0].Name} GDP={this.state.States[0].GDP} Emissions = {this.state.States[0].Emissions} Score = {this.state.States[0].Score} CurrentPolicy = {this.state.States[0].CurrentPolicy} DefaultPolicy={this.state.States[0].DefaultPolicy} MeetingInternationalAgreement={this.state.States[0].MeetingInternationalAgreement}/>
+      <Country name ={this.state.States[1].Name} GDP={this.state.States[1].GDP} Emissions = {this.state.States[1].Emissions} Score = {this.state.States[1].Score} CurrentPolicy = {this.state.States[1].CurrentPolicy} DefaultPolicy={this.state.States[1].DefaultPolicy} MeetingInternationalAgreement={this.state.States[1].MeetingInternationalAgreement}/>
+      <Country name ={this.state.States[2].Name} GDP={this.state.States[2].GDP} Emissions = {this.state.States[2].Emissions} Score = {this.state.States[2].Score} CurrentPolicy = {this.state.States[2].CurrentPolicy} DefaultPolicy={this.state.States[2].DefaultPolicy} MeetingInternationalAgreement={this.state.States[2].MeetingInternationalAgreement}/>
+      <Country name ={this.state.States[3].Name} GDP={this.state.States[3].GDP} Emissions = {this.state.States[3].Emissions} Score = {this.state.States[3].Score} CurrentPolicy = {this.state.States[3].CurrentPolicy} DefaultPolicy={this.state.States[3].DefaultPolicy} MeetingInternationalAgreement={this.state.States[3].MeetingInternationalAgreement}/>
+      <Country name ={this.state.States[4].Name} GDP={this.state.States[4].GDP} Emissions = {this.state.States[4].Emissions} Score = {this.state.States[4].Score} CurrentPolicy = {this.state.States[4].CurrentPolicy} DefaultPolicy={this.state.States[4].DefaultPolicy} MeetingInternationalAgreement={this.state.States[4].MeetingInternationalAgreement}/>
+
 
       </table>
       <select name="Policy">
@@ -105,9 +169,6 @@ class Policy extends React.Component {
   }
 }
 
-function roundUpdate() {
-  return 
-}
 function acceptAgreement() {
   return 
 }
@@ -127,10 +188,11 @@ class Country extends React.Component {
   render(){
     return <tr>
     <th>{this.props.name}</th>
-    <th>{this.state.GDP}</th>
-    <th>{this.state.Score}</th>
-    <th>{this.state.CurrentPolicy}</th>
-    <th>{this.state.MeetingInternationalAgreement}</th>
+    <th>{this.props.GDP}</th>
+    <th>{this.props.Emissions}</th>
+    <th>{this.props.Score}</th>
+    <th>{this.props.CurrentPolicy}</th>
+    <th>{this.props.MeetingInternationalAgreement}</th>
     </tr>
   }
 }
